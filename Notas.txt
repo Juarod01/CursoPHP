@@ -2,4 +2,19 @@
 
 *Composer: Es un manejador de dependencias, donde podremos traer librerias de terceros y 
   tambien podemos implementar estandar PSR4 (permite autocargado de archivos automatico).
-  https://getcomposer.org/ Descargamos el archivo: Composer.phar y lo pegamos en nuestro proyecto.
+  https://getcomposer.org/ 
+  1. Descargamos archivos: Composer-setup.exe y Composer.phar y lo pegamos en nuestro proyecto.
+  2. Instalar Composer-setup.exe (solo damos siguiente, sin habilitar ninguna opción)
+  3. Creamos un archivo en la raiz del proyecto, llamado "composer.json" y escribimos:
+      {
+        "autoload": {
+          "psr-4": {
+            "App\\": "app/"
+          }
+        },
+        "require":{}
+      }
+    (Ojo, todo depende de la estructura del proyecto).
+  4. Vamos a consola, a la raiz del proyecto y ejecutamos el siguiente comando para instalar composer, segun configuramos:
+      "php composer.phar install"
+      con esto, se crea una carpeta llamada "vendor" en el proyecto.

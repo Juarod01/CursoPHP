@@ -19,7 +19,7 @@ $job3->months = 24;
 
 $project1 = new Project('Project 1', 'Description');
 
-// $projectLib = Lib1\Project();
+//$projectLib = Lib1\Project();
 
 $jobs = [
     $job1,
