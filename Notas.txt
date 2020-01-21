@@ -1,1 +1,5 @@
 * PSR: Son recomendaciones y estándares para tu código de PHP.
+
+*Composer: Es un manejador de dependencias, donde podremos traer librerias de terceros y 
+  tambien podemos implementar estandar PSR4 (permite autocargado de archivos automatico).
+  https://getcomposer.org/ Descargamos el archivo: Composer.phar y lo pegamos en nuestro proyecto.
