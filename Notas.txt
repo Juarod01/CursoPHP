@@ -1,0 +1,1 @@
+* PSR: Son recomendaciones y estándares para tu código de PHP.
