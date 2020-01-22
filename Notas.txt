@@ -14,7 +14,14 @@
         },
         "require":{}
       }
-    (Ojo, todo depende de la estructura del proyecto).
+    (Ojo, todo depende de la estructura del proyecto, ahí solo llamamos el manejador de archivos psr4).
   4. Vamos a consola, a la raiz del proyecto y ejecutamos el siguiente comando para instalar composer, segun configuramos:
       "php composer.phar install"
       con esto, se crea una carpeta llamada "vendor" en el proyecto.
+  5. Con esto verificamos que se crea una carpeta llamada "vendor" y ya podemos trabajar para administrar bien los 
+      archivos, que sean llamados correctamente sin necesidad de utilizar "require".
+
+PDO: Php data object
+ORM: Object relational mapping
+    Una principal característica de un ORM es que hace más transparente las conexiones a PostgreSQL y MySQL, 
+    además nos protege de algunas vulnerabilidades de SQL y facilita algunas validaciones a la información.
