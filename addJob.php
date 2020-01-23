@@ -1,15 +1,17 @@
 <?php
+  require_once 'vendor/autoload.php';
 
   use Illuminate\Database\Capsule\Manager as Capsule;
+  use App\Models\Job;
 
   $capsule = new Capsule;
 
   $capsule->addConnection([
       'driver'    => 'mysql',
       'host'      => 'localhost',
-      'database'  => 'database',
+      'database'  => 'cursophp',
       'username'  => 'root',
-      'password'  => 'password',
+      'password'  => '',
       'charset'   => 'utf8',
       'collation' => 'utf8_unicode_ci',
       'prefix'    => '',
@@ -20,7 +22,16 @@
   // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
   $capsule->bootEloquent();
 
-  //var_dump($_POST);
+  //Capturamos información del formulario y la enviamos
+  /*Por defecto, para insertar datos deben haber 2 celdas en la table "created_at" y "updated_at" el formato
+  debe ser DATETIME, se llenan de forma automatica, muestra la fecha de creación y modificación, si no se ponen, 
+  no insertará datos.  */
+  if(!empty($_POST)){
+    $job = new Job();
+    $job->title = $_POST['title'];
+    $job->description = $_POST['description'];
+    $job->save();
+  }
 ?>
 
 <!DOCTYPE html>
