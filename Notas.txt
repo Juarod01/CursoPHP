@@ -25,3 +25,23 @@ PDO: Php data object
 ORM: Object relational mapping
     Una principal característica de un ORM es que hace más transparente las conexiones a PostgreSQL y MySQL, 
     además nos protege de algunas vulnerabilidades de SQL y facilita algunas validaciones a la información.
+Packagist: es un sitio donde encontraras múltiples librerías de terceros que puedes integrar a tus proyectos 
+    mediante composer, de aquí añadiremos nuestra herramienta para la conexión a base de datos.
+    https://packagist.org/packages/illuminate/database
+    Ahí encontraremos un información de este paquete, este paquete implementa un ORM, que soporta conexiones
+    MySQL, Postgres, SQL Server, y SQLite.
+
+    1. Para agregar la libreria al proyecto, utilizamos el comando (require illuminate/database)
+        Esta en la página. Y lo ejecutamos desde consola de la siguiente forma:
+        "php composer.phar require illuminate/database"
+        Una vez realizado esto, se realizan cambios:
+        + El archivo composer.json presenta una modificación en "require", ahí nos notifica que estamos 
+          utilizando illuminate/database y nos indica la versión.
+        + Se crea un archivo llamado "composer.lock", este archivo indica las dependencias que tiene 
+          composer, en que estan basadas.
+        + Tamiben crea mas carpetas dentro de "Vendor", que son necesarias para la libreria instalada.
+
+        OJO: Como buena practica, no se debe subir la carpeta vendor a los repositorios, quien vaya a utilizar
+        el codigo debe ejecutar el comando "php composer.phar install"
+
+    2. Hay que leer las instrucciones en la pagina, para empezar a utilizar el paquete, crear la capsula de conexión.

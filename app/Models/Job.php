@@ -1,16 +1,16 @@
 <?php
 namespace App\Models;
 
-//require_once 'BaseElement.php';
+use Illuminate\Database\Eloquent\Model; //Para traer la información de la base de datos.
 
-class Job extends BaseElement{
-
-  public function __construct($title, $description){
+class Job extends Model{ //Extendemos la clase de a libreria.
+//class Job extends BaseElement{
+  /*public function __construct($title, $description){
     $newTitle = 'Job: ' . $title; 
     
     $this->title = $newTitle;
     $this->description = $description;
-  }
+  }*/
 
   public function getDurationAsString(){
     $years = floor($this->months / 12);
