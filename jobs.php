@@ -1,38 +1,18 @@
 <?php
 
-require_once 'vendor/autoload.php';
+use App\Models\{Job, Project};
 
-use App\Models\{Job, Project, Printable};
+$jobs = Job::all(); //Nos trae todos los registros que encuentre en la tabla de la DDBB
+$projects = Project::all();
 
-$job1 = new Job('PHP Developer', 'This is an awesonw job!!!');
-$job1->months = 16;
-
-$job2 = new Job('Python Dev', 'This is an awesonw job!!!');
-$job2->months = 4;
-
-$job3 = new Job('Devops', 'This is an awesonw job!!!');
-$job3->months = 24;
-
-$project1 = new Project('Project 1', 'Description');
-
-$jobs = [
-    $job1,
-    $job2,
-    $job3
-];
-
-$projects = [
-  $project1
-];
-
-function printElement(Printable $job) {
-    if($job->visible == false) {
-      return;
-    }
+function printElement($job) {
+    // if($job->visible == false) {
+    //   return;
+    // }
   
     echo '<li class="work-position">';
-    echo '<h5>' . $job->getTitle() . '</h5>';
-    echo '<p>' . $job->getDescription() . '</p>';
+    echo '<h5>' . $job->Title . '</h5>';
+    echo '<p>' . $job->Description . '</p>';
     echo '<p>' . $job->getDurationAsString() . '</p>';
     echo '<strong>Achievements:</strong>';
     echo '<ul>';
