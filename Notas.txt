@@ -41,7 +41,7 @@ Packagist: es un sitio donde encontraras múltiples librerías de terceros que p
           composer, en que estan basadas.
         + Tamiben crea mas carpetas dentro de "Vendor", que son necesarias para la libreria instalada.
 
-        OJO: Como buena practica, no se debe subir la carpeta vendor a los repositorios, quien vaya a utilizar
+        OJO: Como buena practica, no se debe subir la carpeta vendor y el archivo composer.phar a los repositorios, quien vaya a utilizar
         el codigo debe ejecutar el comando "php composer.phar install"
 
     2. Hay que leer las instrucciones en la pagina, para empezar a utilizar el paquete, crear la capsula de conexión.
