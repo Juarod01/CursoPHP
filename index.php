@@ -1,33 +1,10 @@
 <?php
 
-require_once 'vendor/autoload.php';
-
-use Illuminate\Database\Capsule\Manager as Capsule;
-//use App\Models\Job;
-//use App\Models\Project;
-
-$capsule = new Capsule;
-
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'cursophp',
-    'username'  => 'root',
-    'password'  => '',
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
-  // Make this Capsule instance available globally via static methods... (optional)
-  $capsule->setAsGlobal();
-  // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
-  $capsule->bootEloquent();
-
+use App\Model\Job;
 require_once('jobs.php');
 
 $name = 'Juan David Rodriguez';
 $limitMonths = 2000;
-
 ?>
 
 <!DOCTYPE HTML>
@@ -41,7 +18,7 @@ $limitMonths = 2000;
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 
   <title>Resume</title>
 </head>
@@ -50,7 +27,7 @@ $limitMonths = 2000;
   <div class="container">
     <div id="resume-header" class="row">
       <div class="col-3">
-        <img id="profile-picture" src="Images/Foto.jpg" alt="">
+        <img id="profile-picture" src="../Images/Foto.jpg" alt="">
       </div>
       <div class="col">
         <h1><?php echo $name; ?></h1>

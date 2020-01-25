@@ -15,11 +15,11 @@
         "require":{}
       }
     (Ojo, todo depende de la estructura del proyecto, ahí solo llamamos el manejador de archivos psr4).
-  4. Vamos a consola, a la raiz del proyecto y ejecutamos el siguiente comando para instalar composer, segun configuramos:
-      "php composer.phar install"
+  4. Vamos a consola, a la raiz del proyecto y ejecutamos el siguiente comando para instalar composer, 
+      segun configuramos: "php composer.phar install"
       con esto, se crea una carpeta llamada "vendor" en el proyecto.
-  5. Con esto verificamos que se crea una carpeta llamada "vendor" y ya podemos trabajar para administrar bien los 
-      archivos, que sean llamados correctamente sin necesidad de utilizar "require".
+  5. Con esto verificamos que se crea una carpeta llamada "vendor" y ya podemos trabajar para administrar 
+      bien los archivos, que sean llamados correctamente sin necesidad de utilizar "require".
 
 PDO: Php data object
 ORM: Object relational mapping
@@ -41,7 +41,11 @@ Packagist: es un sitio donde encontraras múltiples librerías de terceros que p
           composer, en que estan basadas.
         + Tamiben crea mas carpetas dentro de "Vendor", que son necesarias para la libreria instalada.
 
-        OJO: Como buena practica, no se debe subir la carpeta vendor y el archivo composer.phar a los repositorios, quien vaya a utilizar
-        el codigo debe ejecutar el comando "php composer.phar install"
+        OJO: Como buena practica, no se debe subir la carpeta vendor y el archivo composer.phar a los repositorios, 
+        quien vaya a utilizar el codigo debe ejecutar el comando "php composer.phar install"
 
     2. Hay que leer las instrucciones en la pagina, para empezar a utilizar el paquete, crear la capsula de conexión.
+
+Front Controller: es un patrón de diseño que nos dará una solución a la redundancia del código en las múltiples 
+    entradas a la aplicación. Este tendrá el control de todas las entradas además de las inicializaciones de 
+    base de datos etc.
