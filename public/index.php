@@ -23,6 +23,14 @@
   // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
   $capsule->bootEloquent();
 
+  $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
+    $_SERVER,
+    $_GET,
+    $_POST,
+    $_COOKIE,
+    $_FILES
+);
+
   $route = $_GET['route'] ?? '/';
   if($route == '/'){
     require '../index.php';

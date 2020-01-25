@@ -49,3 +49,13 @@ Packagist: es un sitio donde encontraras múltiples librerías de terceros que p
 Front Controller: es un patrón de diseño que nos dará una solución a la redundancia del código en las múltiples 
     entradas a la aplicación. Este tendrá el control de todas las entradas además de las inicializaciones de 
     base de datos etc.
+
+PSR7: Es un estandar que nos permite normalizar un request y un response en PHP.
+    En este enlace encontrarás la documentación de PSR7: https://www.php-fig.org/psr/psr-7/
+    Aquí encontrarás cómo implementarlo: https://docs.laminas.dev/laminas-diactoros/
+
+    Utilizamos la libreria "laminas-diactoros" que utiliza el estandar PSR7, se realiza instalación
+    con el comando: "php composer.phar require laminas/laminas-diactoros"
+
+
+.htaccess: Son archivos de configuración de apache, permite redireccionar
