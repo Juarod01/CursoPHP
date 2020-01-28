@@ -58,4 +58,4 @@ PSR7: Es un estandar que nos permite normalizar un request y un response en PHP.
     con el comando: "php composer.phar require laminas/laminas-diactoros"
 
 
-.htaccess: Son archivos de configuración de apache, permite redireccionar
+.htaccess: (motor de direccionamiento de apache) Son archivos de configuración de apache, permite redireccionar

@@ -31,12 +31,14 @@
     $_FILES
 );
 
-  $route = $_GET['route'] ?? '/';
-  if($route == '/'){
-    require '../index.php';
-  } elseif($route == 'addJob'){
-    require '../addJob.php';
-  } elseif($route == 'addProject'){
-    require '../addProject.php';
-  }
+  var_dump($request->getUri()->getPath()); // Viene definido del PSR7
+
+  // $route = $_GET['route'] ?? '/';
+  // if($route == '/'){
+  //   require '../index.php';
+  // } elseif($route == 'addJob'){
+  //   require '../addJob.php';
+  // } elseif($route == 'addProject'){
+  //   require '../addProject.php';
+  // }
   
