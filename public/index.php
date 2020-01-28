@@ -7,6 +7,8 @@
   require_once '../vendor/autoload.php';
 
   use Illuminate\Database\Capsule\Manager as Capsule;
+  use Aura\Router\RouterContainer;
+
   $capsule = new Capsule;
   $capsule->addConnection([
       'driver'    => 'mysql',
@@ -31,7 +33,25 @@
     $_FILES
 );
 
-  var_dump($request->getUri()->getPath()); // Viene definido del PSR7
+$routerContainer = new RouterContainer();
+$map = $routerContainer->getMap();
+
+$baseRoute = '/cursophp';
+
+$map->get('index', $baseRoute.'/', '../index.php');
+$map->get('addJob', $baseRoute.'/add/job', '../addJob.php');
+$map->get('addProject', $baseRoute.'/add/project', '../addProject.php');
+
+$matcher = $routerContainer->getMatcher();
+$route = $matcher->match($request);
+if(!$route){
+  echo 'No route';
+}else{
+  //var_dump($route->handler);
+  require $route->handler;
+}
+//var_dump($request->getUri()->getPath()); // Viene definido del PSR7
+
 
   // $route = $_GET['route'] ?? '/';
   // if($route == '/'){

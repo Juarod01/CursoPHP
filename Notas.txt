@@ -57,5 +57,8 @@ PSR7: Es un estandar que nos permite normalizar un request y un response en PHP.
     Utilizamos la libreria "laminas-diactoros" que utiliza el estandar PSR7, se realiza instalación
     con el comando: "php composer.phar require laminas/laminas-diactoros"
 
+    aura/router: Es otro paquete que utiliza el estandar PSR7: composer require aura/router
+      documentación: https://github.com/auraphp/Aura.Router/blob/HEAD/docs/index.md
+
 
 .htaccess: (motor de direccionamiento de apache) Son archivos de configuración de apache, permite redireccionar
