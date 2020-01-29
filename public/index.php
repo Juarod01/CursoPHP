@@ -38,7 +38,11 @@ $map = $routerContainer->getMap();
 
 $baseRoute = '/cursophp';
 
-$map->get('index', $baseRoute.'/', '../index.php');
+//$map->get('index', $baseRoute.'/', '../index.php');
+$map->get('index', $baseRoute.'/', [
+  'controller' => 'App\Controllers\IndexController',
+  'action' => 'indexAction'
+]);
 $map->get('addJob', $baseRoute.'/add/job', '../addJob.php');
 $map->get('addProject', $baseRoute.'/add/project', '../addProject.php');
 
@@ -47,8 +51,14 @@ $route = $matcher->match($request);
 if(!$route){
   echo 'No route';
 }else{
+  $handlerData = $route->handler;
+  $controllerName = $handlerData['controller'];
+  $actionName = $handlerData['action'];
+
+  $controller = new $controllerName;
+  $controller->$actionName();
   //var_dump($route->handler);
-  require $route->handler;
+  //require $route->handler;
 }
 //var_dump($request->getUri()->getPath()); // Viene definido del PSR7
 

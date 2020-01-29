@@ -62,3 +62,5 @@ PSR7: Es un estandar que nos permite normalizar un request y un response en PHP.
 
 
 .htaccess: (motor de direccionamiento de apache) Son archivos de configuración de apache, permite redireccionar
+
+MVC: Es un patrón de diseño que divide nuestra aplicación en tres partes fundamentales: Model, View, Controller
