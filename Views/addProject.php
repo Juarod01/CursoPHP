@@ -9,12 +9,12 @@
 </head>
 <body>
   <h1>Add Project</h1>
-  <form action="addProject.php" method="POST">
+  <form action="/cursophp/add/project" method="POST">
     <label for="">Title:</label>
-    <input type="text" name="titleProject">
+    <input type="text" name="title">
     <br>
     <label for="">Description:</label>
-    <input type="text" name="descriptionProject">
+    <input type="text" name="description">
     <br>
     <button type="submit">Save</button>
   </form>
