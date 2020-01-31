@@ -1,12 +1,3 @@
-<?php
-
-use App\Model\Job;
-require_once('jobs.php');
-
-$name = 'Juan David Rodriguez';
-$limitMonths = 2000;
-?>
-
 <!DOCTYPE HTML>
 <HTML lang="en">
 

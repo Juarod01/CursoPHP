@@ -43,11 +43,38 @@ $map->get('index', $baseRoute.'/', [
   'controller' => 'App\Controllers\IndexController',
   'action' => 'indexAction'
 ]);
-$map->get('addJob', $baseRoute.'/add/job', '../addJob.php');
-$map->get('addProject', $baseRoute.'/add/project', '../addProject.php');
+$map->get('addJob', $baseRoute.'/add/job', [
+  'controller' => 'App\Controllers\JobsController',
+  'action' => 'getAddJobAction'
+]);
+$map->get('addProject', $baseRoute.'/add/project', [
+  'controller' => 'App\Controllers\ProjectsController',
+  'action' => 'getAddProjectAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
+
+
+function printElement($job) {
+  // if($job->visible == false) {
+  //   return;
+  // }
+
+  echo '<li class="work-position">';
+  echo '<h5>' . $job->Title . '</h5>';
+  echo '<p>' . $job->Description . '</p>';
+  echo '<p>' . $job->getDurationAsString() . '</p>';
+  echo '<strong>Achievements:</strong>';
+  echo '<ul>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '</ul>';
+  echo '</li>';
+}
+
+
 if(!$route){
   echo 'No route';
 }else{
