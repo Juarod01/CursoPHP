@@ -64,3 +64,10 @@ PSR7: Es un estandar que nos permite normalizar un request y un response en PHP.
 .htaccess: (motor de direccionamiento de apache) Son archivos de configuración de apache, permite redireccionar
 
 MVC: Es un patrón de diseño que divide nuestra aplicación en tres partes fundamentales: Model, View, Controller
+
+Template engines: Son motores que sirven para renderear el código html y sustituir las partes de código con los 
+    datos que se tienen que imprimir. 
+    PHP a pesar de que fue pensado para ser un template engine, se ha enfocado más en la programación, 
+    por eso tenemos librerías que se concentran totalmente en esto.
+
+    Twig: es un Template Engine que nos ayudará a manejar la seguridad en los elementos de entrada de la aplicación.

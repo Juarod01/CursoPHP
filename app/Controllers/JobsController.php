@@ -3,7 +3,7 @@
 namespace App\Controllers;
 use App\Models\Job;
 
-class JobsController{
+class JobsController extends BaseController{
   public function getAddJobAction($request){
     //Capturamos información del formulario y la enviamos
     /*Por defecto, para insertar datos deben haber 2 celdas en la table "created_at" y "updated_at" el formato
@@ -16,6 +16,7 @@ class JobsController{
       $job->description = $postData['description'];
       $job->save();
     }
-    include '../Views/addJob.php';
+    //include '../Views/addJob.php';
+    echo $this->renderHTML('addJob.twig');
   }
 }
