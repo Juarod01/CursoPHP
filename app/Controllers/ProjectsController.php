@@ -17,6 +17,6 @@ class ProjectsController extends BaseController{
       $project->save();
     }
     //include '../Views/addProject.php';
-    echo $this->renderHTML('addProject.twig');
+    return $this->renderHTML('addProject.twig');
   }
 }
