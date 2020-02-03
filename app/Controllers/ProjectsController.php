@@ -2,21 +2,35 @@
 
 namespace App\Controllers;
 use App\Models\Project;
+use Respect\Validation\Validator as v;
 
 class ProjectsController extends BaseController{
   public function getAddProjectAction($request){
-    //Capturamos información del formulario y la enviamos
-    /*Por defecto, para insertar datos deben haber 2 celdas en la table "created_at" y "updated_at" el formato
-    debe ser DATETIME, se llenan de forma automatica, muestra la fecha de creación y modificación, si no se ponen, 
-    no insertará datos.  */
+    $ResponseMessage = null;
+
     if($request->getMethod() == 'POST'){
       $postData = $request->getParsedBody();
-      $project = new Project();
-      $project->title = $postData['title'];
-      $project->description = $postData['description'];
-      $project->save();
+      $projectValidator = v::key('title', v::stringType()->notEmpty())
+                  ->key('description', v::stringType()->notEmpty());
+
+      try{
+        $projectValidator->assert($postData);
+        $postData = $request->getParsedBody();
+        $project = new Project();
+        $project->title = $postData['title'];
+        $project->description = $postData['description'];
+        $project->save();
+
+        $ResponseMessage = 'Saved';
+      } catch(\Exception $e){
+        $ResponseMessage = $e->getMessage();
+      }
+
+      
     }
-    //include '../Views/addProject.php';
-    return $this->renderHTML('addProject.twig');
+
+    return $this->renderHTML('addProject.twig', [
+      'ResponseMessage' => $ResponseMessage
+    ]);
   }
 }

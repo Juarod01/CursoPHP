@@ -2,21 +2,35 @@
 
 namespace App\Controllers;
 use App\Models\Job;
+use Respect\Validation\Validator as v;
 
 class JobsController extends BaseController{
   public function getAddJobAction($request){
-    //Capturamos información del formulario y la enviamos
-    /*Por defecto, para insertar datos deben haber 2 celdas en la table "created_at" y "updated_at" el formato
-    debe ser DATETIME, se llenan de forma automatica, muestra la fecha de creación y modificación, si no se ponen, 
-    no insertará datos.  */
+    $ResponseMessage = null;
+
     if($request->getMethod() == 'POST'){
       $postData = $request->getParsedBody();
-      $job = new Job();
-      $job->title = $postData['title'];
-      $job->description = $postData['description'];
-      $job->save();
+      $jobValidator = v::key('title', v::stringType()->notEmpty())
+                  ->key('description', v::stringType()->notEmpty());
+
+      try{
+        $jobValidator->assert($postData);
+        $postData = $request->getParsedBody();
+        $job = new Job();
+        $job->title = $postData['title'];
+        $job->description = $postData['description'];
+        $job->save();
+
+        $ResponseMessage = 'Saved';
+      } catch(\Exception $e){
+        $ResponseMessage = $e->getMessage();
+      }
+
+      
     }
-    //include '../Views/addJob.php';
-    return $this->renderHTML('addJob.twig');
+
+    return $this->renderHTML('addJob.twig', [
+      'ResponseMessage' => $ResponseMessage
+    ]);
   }
 }

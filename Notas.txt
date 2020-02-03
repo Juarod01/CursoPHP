@@ -73,3 +73,5 @@ Template engines: Son motores que sirven para renderear el código html y sustit
     Twig: es un Template Engine que nos ayudará a manejar la seguridad en los elementos de entrada de la aplicación.
 
 Validaciones: Usaremos esta dependencia: https://packagist.org/packages/respect/validation la cual integraremos a composer.
+    Las validaciones se realizan del lado del servidor, tambien se deben realizar validaciones
+    del lado del cliente.
