@@ -91,19 +91,7 @@ if(!$route){
   $actionName = $handlerData['action'];
 
   $controller = new $controllerName;
-  $controller->$actionName($request);
-  //var_dump($route->handler);
-  //require $route->handler;
-}
-//var_dump($request->getUri()->getPath()); // Viene definido del PSR7
+  $response = $controller->$actionName($request); 
 
-
-  // $route = $_GET['route'] ?? '/';
-  // if($route == '/'){
-  //   require '../index.php';
-  // } elseif($route == 'addJob'){
-  //   require '../addJob.php';
-  // } elseif($route == 'addProject'){
-  //   require '../addProject.php';
-  // }
-  
+  echo $response->getBody();
+}  

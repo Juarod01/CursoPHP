@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use Laminas\Diactoros\Response\HTMLResponse;
 
 class BaseController {
   protected $templateEngine;
@@ -14,6 +15,6 @@ class BaseController {
   }
 
   public function renderHTML($fileName, $data = []){
-    return $this->templateEngine->render($fileName, $data);
+    return new HTMLResponse($this->templateEngine->render($fileName, $data));
   }
 }

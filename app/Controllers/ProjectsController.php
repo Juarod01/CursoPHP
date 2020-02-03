@@ -3,7 +3,7 @@
 namespace App\Controllers;
 use App\Models\Project;
 
-class ProjectsController{
+class ProjectsController extends BaseController{
   public function getAddProjectAction($request){
     //Capturamos información del formulario y la enviamos
     /*Por defecto, para insertar datos deben haber 2 celdas en la table "created_at" y "updated_at" el formato
@@ -16,6 +16,7 @@ class ProjectsController{
       $project->description = $postData['description'];
       $project->save();
     }
-    include '../Views/addProject.php';
+    //include '../Views/addProject.php';
+    echo $this->renderHTML('addProject.twig');
   }
 }
