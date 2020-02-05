@@ -1,0 +1,15 @@
+{% extends "templateMaster.twig" %}
+
+{% block content %}
+  <h1>Login</h1>
+
+  <form action="/cursophp/auth" method="POST" enctype="multipart/form-data">
+    <label for="">Mail:</label>
+    <input type="email" name="mail">
+    <br>
+    <label for="">Password:</label>
+    <input type="password" name="password">
+    <br>
+    <button type="submit">Login</button>
+  </form>
+{% endblock %}
