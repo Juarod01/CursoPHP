@@ -59,6 +59,14 @@ $map->post('saveProject', $baseRoute.'/add/project', [
   'controller' => 'App\Controllers\ProjectsController',
   'action' => 'getAddProjectAction'
 ]);
+$map->get('addUser', $baseRoute.'/add/user', [
+  'controller' => 'App\Controllers\UserController',
+  'action' => 'getAddUserAction'
+]);
+$map->post('saveUser', $baseRoute.'/add/user', [
+  'controller' => 'App\Controllers\UserController',
+  'action' => 'getAddUserAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
