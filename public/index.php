@@ -6,6 +6,8 @@
 
   require_once '../vendor/autoload.php';
 
+  session_start();
+
   use Illuminate\Database\Capsule\Manager as Capsule;
   use Aura\Router\RouterContainer;
 
@@ -45,27 +47,33 @@ $map->get('index', $baseRoute.'/', [
 ]);
 $map->get('addJob', $baseRoute.'/add/job', [
   'controller' => 'App\Controllers\JobsController',
-  'action' => 'getAddJobAction'
+  'action' => 'getAddJobAction',
+  'auth' => true
 ]);
 $map->post('saveJob', $baseRoute.'/add/job', [
   'controller' => 'App\Controllers\JobsController',
-  'action' => 'getAddJobAction'
+  'action' => 'getAddJobAction',
+  'auth' => true
 ]);
 $map->get('addProject', $baseRoute.'/add/project', [
   'controller' => 'App\Controllers\ProjectsController',
-  'action' => 'getAddProjectAction'
+  'action' => 'getAddProjectAction',
+  'auth' => true
 ]);
 $map->post('saveProject', $baseRoute.'/add/project', [
   'controller' => 'App\Controllers\ProjectsController',
-  'action' => 'getAddProjectAction'
+  'action' => 'getAddProjectAction',
+  'auth' => true
 ]);
 $map->get('addUser', $baseRoute.'/add/user', [
   'controller' => 'App\Controllers\UserController',
-  'action' => 'getAddUserAction'
+  'action' => 'getAddUserAction',
+  'auth' => true
 ]);
 $map->post('saveUser', $baseRoute.'/add/user', [
   'controller' => 'App\Controllers\UserController',
-  'action' => 'getAddUserAction'
+  'action' => 'getAddUserAction',
+  'auth' => true
 ]);
 $map->get('loginForm', $baseRoute.'/login', [
   'controller' => 'App\Controllers\AuthController',
@@ -79,6 +87,10 @@ $map->get('admin', $baseRoute.'/admin', [
   'controller' => 'App\Controllers\AdminController',
   'action' => 'getIndex',
   'auth' => true
+]);
+$map->get('logout', $baseRoute.'/logout', [
+  'controller' => 'App\Controllers\AuthController',
+  'action' => 'getLogout'
 ]);
 
 $matcher = $routerContainer->getMatcher();
@@ -111,6 +123,12 @@ if(!$route){
   $controllerName = $handlerData['controller'];
   $actionName = $handlerData['action'];
   $needsAuth = $handlerData['auth'] ?? false;
+
+  $sessionUserId = $_SESSION['userId'] ?? null;
+  if($needsAuth && !$sessionUserId){
+    echo 'Protected route';
+    die;
+  }
 
   $controller = new $controllerName;
   $response = $controller->$actionName($request); 

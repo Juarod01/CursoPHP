@@ -15,10 +15,10 @@ class AuthController extends BaseController{
     $postData = $request->getParsedBody();
     $responseMessage = null;
     $user = User::where('mail', $postData['mail'])->first();
-    $baseRoute = '/cursophp';
     if($user){
       if(\password_verify($postData['password'], $user->password)){
-        return new RedirectResponse($baseRoute.'/admin');
+        $_SESSION['userId'] = $user->Id;
+        return new RedirectResponse('/cursophp/admin');
       }else{
         $responseMessage = 'Bad credentials';
       }
@@ -29,5 +29,9 @@ class AuthController extends BaseController{
     return $this->renderHTML('login.twig', [
       'ResponseMessage' => $responseMessage
     ]);
+  }
+  public function getLogout(){
+    unset($_SESSION['userId']);
+    return new RedirectResponse('/cursophp/login');
   }
 }
