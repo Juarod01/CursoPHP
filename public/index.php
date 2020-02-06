@@ -75,6 +75,11 @@ $map->post('auth', $baseRoute.'/auth', [
   'controller' => 'App\Controllers\AuthController',
   'action' => 'postLogin'
 ]);
+$map->get('admin', $baseRoute.'/admin', [
+  'controller' => 'App\Controllers\AdminController',
+  'action' => 'getIndex',
+  'auth' => true
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
@@ -105,6 +110,7 @@ if(!$route){
   $handlerData = $route->handler;
   $controllerName = $handlerData['controller'];
   $actionName = $handlerData['action'];
+  $needsAuth = $handlerData['auth'] ?? false;
 
   $controller = new $controllerName;
   $response = $controller->$actionName($request); 
