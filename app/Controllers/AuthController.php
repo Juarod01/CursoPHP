@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\User;
 use Respect\Validation\Validator as v;
+use Laminas\Diactoros\Response\RedirectResponse;
 
 class AuthController extends BaseController{
 
@@ -12,15 +13,21 @@ class AuthController extends BaseController{
 
   public function postLogin($request){
     $postData = $request->getParsedBody();
+    $responseMessage = null;
     $user = User::where('mail', $postData['mail'])->first();
+    $baseRoute = '/cursophp';
     if($user){
       if(\password_verify($postData['password'], $user->password)){
-        echo 'Password correct';
+        return new RedirectResponse($baseRoute.'/admin');
       }else{
-        echo 'Password wrong';
+        $responseMessage = 'Bad credentials';
       }
     }else{
-      echo 'Not found';
+      $responseMessage = 'Bad credentials';
     }
+
+    return $this->renderHTML('login.twig', [
+      'ResponseMessage' => $responseMessage
+    ]);
   }
 }
