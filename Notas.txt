@@ -81,3 +81,9 @@ Subir archivos: Al subir archivos debemos tener muchos puntos de seguridad en cu
     Después desde el código PHP obtendremos el archivo con la variable super global $_FILES.
     Es recomendable alojar los archivos en un servidor diferente, realizar validaciones con el 
     tipo de archivos, tanto en frontend como en backend.
+
+Variables de entorno: Los datos de configuración de la base de datos por ahora se encuentran hardcodeados. Utilizaremos 
+    variables de entorno como una buena práctica para sacarlas de ahí.
+    Utilizaremos esta dependencia para cargar las variables de entono en super variables: 
+    https://packagist.org/packages/vlucas/phpdotenv
+    El archivo .env que se genera, no se sube a repositorio
