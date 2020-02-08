@@ -87,3 +87,10 @@ Variables de entorno: Los datos de configuración de la base de datos por ahora 
     Utilizaremos esta dependencia para cargar las variables de entono en super variables: 
     https://packagist.org/packages/vlucas/phpdotenv
     El archivo .env que se genera, no se sube a repositorio
+
+Deploy: Termino utilizado para decir que se va a enviar aplicación a otro servidor.
+    Heroku: Ofrece capa gratuita de servidores y DB, para realizar pruebas.
+    Para subir el proyecto a Heroku podemos utilizar git:
+    1. Primero debemos instalar la aplicación de Heroku.
+    2. 
+
