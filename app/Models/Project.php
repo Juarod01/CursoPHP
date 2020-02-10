@@ -5,6 +5,4 @@ use Illuminate\Database\Eloquent\Model; //Para traer la información de la base 
 
 class Project extends Model{
   protected $table = 'projects'; //Llamamos la tabla de la BBDD
-  
-  public function getDurationAsString(){}
 }

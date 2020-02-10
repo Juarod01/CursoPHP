@@ -105,7 +105,6 @@ function printElement($job) {
   echo '<li class="work-position">';
   echo '<h5>' . $job->Title . '</h5>';
   echo '<p>' . $job->Description . '</p>';
-  echo '<p>' . $job->getDurationAsString() . '</p>';
   echo '<strong>Achievements:</strong>';
   echo '<ul>';
   echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';

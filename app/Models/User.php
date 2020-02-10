@@ -5,7 +5,4 @@ use Illuminate\Database\Eloquent\Model; //Para traer la información de la base 
 
 class User extends Model{ //Extendemos la clase de a libreria.
   protected $table = 'users'; //Llamamos la tabla de la BBDD
-
-  public function getDurationAsString(){
-  }
 }
