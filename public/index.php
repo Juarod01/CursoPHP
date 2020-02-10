@@ -8,16 +8,19 @@
 
   session_start();
 
+  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+  $dotenv->load();
+
   use Illuminate\Database\Capsule\Manager as Capsule;
   use Aura\Router\RouterContainer;
 
   $capsule = new Capsule;
   $capsule->addConnection([
       'driver'    => 'mysql',
-      'host'      => 'localhost',
-      'database'  => 'cursophp',
-      'username'  => 'root',
-      'password'  => '',
+      'host'      => getenv('DB_HOST'),
+      'database'  => getenv('DB_NAME'),
+      'username'  => getenv('DB_USER'),
+      'password'  => getenv('DB_PASS'),
       'charset'   => 'utf8',
       'collation' => 'utf8_unicode_ci',
       'prefix'    => '',
@@ -38,57 +41,67 @@
 $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
 
-$baseRoute = '/cursophp';
+//$baseRoute = '/cursophp';
 
-//$map->get('index', $baseRoute.'/', '../index.php');
-$map->get('index', $baseRoute.'/', [
+//$map->get('index', $baseRoute.'/', [
+$map->get('index', '/', [
   'controller' => 'App\Controllers\IndexController',
   'action' => 'indexAction'
 ]);
-$map->get('addJob', $baseRoute.'/add/job', [
+//$map->get('addJob', $baseRoute.'/add/job', [
+$map->get('addJob', '/add/job', [
   'controller' => 'App\Controllers\JobsController',
   'action' => 'getAddJobAction',
   'auth' => true
 ]);
-$map->post('saveJob', $baseRoute.'/add/job', [
+//$map->post('saveJob', $baseRoute.'/add/job', [
+$map->post('saveJob', 'add/job', [
   'controller' => 'App\Controllers\JobsController',
   'action' => 'getAddJobAction',
   'auth' => true
 ]);
-$map->get('addProject', $baseRoute.'/add/project', [
+$map->get('addProject', '/add/project', [
+//$map->get('addProject', $baseRoute.'/add/project', [
   'controller' => 'App\Controllers\ProjectsController',
   'action' => 'getAddProjectAction',
   'auth' => true
 ]);
-$map->post('saveProject', $baseRoute.'/add/project', [
+$map->post('saveProject', '/add/project', [
+//$map->post('saveProject', $baseRoute.'/add/project', [
   'controller' => 'App\Controllers\ProjectsController',
   'action' => 'getAddProjectAction',
   'auth' => true
 ]);
-$map->get('addUser', $baseRoute.'/add/user', [
+$map->get('addUser', '/add/user', [
+//$map->get('addUser', $baseRoute.'/add/user', [
   'controller' => 'App\Controllers\UserController',
   'action' => 'getAddUserAction',
   'auth' => true
 ]);
-$map->post('saveUser', $baseRoute.'/add/user', [
+//$map->post('saveUser', $baseRoute.'/add/user', [
+$map->post('saveUser', '/add/user', [
   'controller' => 'App\Controllers\UserController',
   'action' => 'getAddUserAction',
   'auth' => true
 ]);
-$map->get('loginForm', $baseRoute.'/login', [
+//$map->get('loginForm', $baseRoute.'/login', [
+$map->get('loginForm', '/login', [
   'controller' => 'App\Controllers\AuthController',
   'action' => 'getLogin'
 ]);
-$map->post('auth', $baseRoute.'/auth', [
+//$map->post('auth', $baseRoute.'/auth', [
+$map->post('auth', '/auth', [
   'controller' => 'App\Controllers\AuthController',
   'action' => 'postLogin'
 ]);
-$map->get('admin', $baseRoute.'/admin', [
+//$map->get('admin', $baseRoute.'/admin', [
+$map->get('admin', '/admin', [
   'controller' => 'App\Controllers\AdminController',
   'action' => 'getIndex',
   'auth' => true
 ]);
-$map->get('logout', $baseRoute.'/logout', [
+//$map->get('logout', $baseRoute.'/logout', [
+$map->get('logout', '/logout', [
   'controller' => 'App\Controllers\AuthController',
   'action' => 'getLogout'
 ]);
